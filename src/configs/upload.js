@@ -1,12 +1,12 @@
-const path = require("path");
 const multer = require("multer");
 const crypto = require("crypto");
+const path = require("path");
 
 const TMP_FOLDER = path.resolve(__dirname, "..", "..", "tmp");
 const UPLOADS_FOLDER = path.resolve(TMP_FOLDER, "uploads");
 
 const MULTER = {
-  Storage: multer.diskStorage({
+  storage: multer.diskStorage({
     destination: TMP_FOLDER,
     filename(request, file, callback) {
       const fileHash = crypto.randomBytes(10).toString("hex");
@@ -20,5 +20,5 @@ const MULTER = {
 module.exports = {
   TMP_FOLDER,
   UPLOADS_FOLDER,
-  MULTER,
-};
+  MULTER
+}
